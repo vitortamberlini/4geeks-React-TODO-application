@@ -1,23 +1,27 @@
-import MyCard from "./card.jsx";
+import MyCard from "./my-card.jsx";
 import ListGroup from "react-bootstrap/ListGroup";
-import MyFooter from "./my-card.jsx";
+import MyFooter from "./my-footer.jsx";
 import { useState } from "react";
 
 const CardContainer = () => {
-	const [items, setItems] = useState(["da o cu", "sair cagando"]);
+	const [items, setItems] = useState(["aaaaaaa"]);
 	const [todo, setTodo] = useState("");
 
 	function handleInput(event) {
-		console.log(event);
 		setTodo(event.target.value);
 	}
 
 	function handleEnter(event) {
-		console.log("dsiduhsduis");
 		if (event.key === "Enter") {
-			setItems(items.concat(todo));
-			setTodo("");
+			if (todo !== "") {
+				setItems(items.concat(todo));
+				setTodo("");
+			}
 		}
+	}
+
+	function handleRemove(event, index) {
+		setItems(items.splice(index, 1));
 	}
 
 	return (
@@ -35,7 +39,12 @@ const CardContainer = () => {
 				/>
 			</ListGroup.Item>
 			{items.map((item, id) => (
-				<MyCard key={id} text={item} />
+				<MyCard
+					key={id}
+					index={id}
+					text={item}
+					handleRemove={handleRemove}
+				/>
 			))}
 
 			<MyFooter itemsLeft={items.length} />

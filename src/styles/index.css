@@ -16,6 +16,18 @@
       font-size: 0.6rem;
   }
 
+  .close-button {
+    visibility: hidden;
+  }
+
+  .close-button:hover {
+    cursor: pointer;
+  }
+
+  .hovered {
+    visibility: visible;
+  }
+
   #todo-input:focus {
     outline: none;
   }
