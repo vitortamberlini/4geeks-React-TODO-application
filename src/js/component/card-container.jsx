@@ -21,7 +21,9 @@ const CardContainer = () => {
 	}
 
 	function handleRemove(event, index) {
-		setItems(items.splice(index, 1));
+		const newItems = [...items];
+		newItems.splice(index, 1);
+		setItems(newItems);
 	}
 
 	return (
